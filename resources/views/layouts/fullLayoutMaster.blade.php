@@ -4,7 +4,7 @@
 @endisset
     <!DOCTYPE html>
 @php
-    $configData = Helper::applClasses();
+    $configData = Helper::applClasses()
 @endphp
 <!--
 Template Name: Materialize - Material Design Admin Template
@@ -47,7 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="col s12">
         <div class="container">
             <!--  main content -->
-            @yield('content')
+            {{ $slot }}
         </div>
         {{-- overlay --}}
         <div class="content-overlay"></div>

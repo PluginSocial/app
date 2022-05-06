@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'class_namespace' => 'App\\Http\\Component',
+    'class_namespace' => 'App\\Http\\Components',
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
     |
     */
 
-    'view_path' => resource_path('views/component'),
+    'view_path' => resource_path('views/components'),
 
     /*
     |--------------------------------------------------------------------------
