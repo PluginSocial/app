@@ -46,12 +46,18 @@ sail artisan key:generate
 ````
 
 ````shell
+sail artisan migrate --seed
+````
+
+````shell
 sail npm install
 ````
 
 ````shell
 sail npm run dev
 ````
+
+
 
 
 
