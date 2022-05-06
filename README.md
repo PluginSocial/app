@@ -11,12 +11,12 @@
 
 **PluginSocial** é um aplicativo que permite interações entre redes sociais, isso é apenas a ponta do iceberg!
 
-## Learning Laravel
+## Learning PluginSocial
 
 - See documentation App
 - See documentation API
 
-## Laravel Sponsors
+## PluginSocial Sponsors
 
 We would like to extend our thanks to the following sponsors for funding **PluginSocial** development. If you are interested in becoming a sponsor, please visit the PluginSocial.
 
