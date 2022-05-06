@@ -13,6 +13,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
+        "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4"
     },
@@ -48,7 +49,8 @@
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
+            "@php artisan ide-helper:meta",
+            "@php artisan telescope:publish --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
