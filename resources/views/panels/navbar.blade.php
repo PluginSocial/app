@@ -50,25 +50,25 @@
         <li class="dropdown-item">
           <a class="grey-text text-darken-1" href="{{url('lang/en')}}" data-language="en">
             <i class="flag-icon flag-icon-gb"></i>
-            English
+            {{ __('English') }}
           </a>
         </li>
         <li class="dropdown-item">
           <a class="grey-text text-darken-1" href="{{url('lang/fr')}}" data-language="fr">
             <i class="flag-icon flag-icon-fr"></i>
-            French
+            {{ __('French') }}
           </a>
         </li>
         <li class="dropdown-item">
           <a class="grey-text text-darken-1" href="{{url('lang/pt')}}" data-language="pt">
-            <i class="flag-icon flag-icon-pt"></i>
-            Portuguese
+            <i class="flag-icon flag-icon-br"></i>
+              {{__('Portuguese')}}
           </a>
         </li>
         <li class="dropdown-item">
           <a class="grey-text text-darken-1" href="{{url('lang/de')}}" data-language="de">
             <i class="flag-icon flag-icon-de"></i>
-            German
+            {{ __('German') }}
           </a>
         </li>
       </ul>
