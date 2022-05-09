@@ -35,7 +35,7 @@ Auth::routes(['verify' => true]);
 
 // Dashboard Route
 // Route::get('/', [DashboardController::class, 'dashboardModern'])->middleware('verified');
-Route::get('/', [DashboardController::class, 'dashboardModern']);
+Route::get('/', [DashboardController::class, 'dashboardModern'])->name('dashboard');
 
 Route::get('/modern', [DashboardController::class, 'dashboardModern']);
 Route::get('/ecommerce', [DashboardController::class, 'dashboardEcommerce']);

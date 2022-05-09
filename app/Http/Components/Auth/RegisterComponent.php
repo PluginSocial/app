@@ -4,6 +4,7 @@ namespace App\Http\Components\Auth;
 
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Throwable;
 
@@ -58,6 +59,8 @@ class RegisterComponent extends Component
 
         try {
             $this->user->saveOrFail();
+
+            Auth::login($this->user, true);
 
             return redirect()->to('/');
         } catch (Throwable $e) {

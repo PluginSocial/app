@@ -31,6 +31,18 @@ class RegisterComponentTest extends TestCase
             ->call('createNewUser');
     }
 
+    /**
+     * @return array
+     */
+    private function makeUser(): array
+    {
+        return $this->userData = [
+            'user.name' => $this->faker->name,
+            'user.email' => $this->faker->email,
+            'user.password' => $this->faker->password
+        ];
+    }
+
     public function test_guest_can_set_initial_data_for_create_user()
     {
         Livewire::test(RegisterComponent::class)
@@ -67,15 +79,26 @@ class RegisterComponentTest extends TestCase
             ]);
     }
 
-    /**
-     * @return array
-     */
-    private function makeUser(): array
+    public function test_new_user_is_authenticated()
     {
-        return $this->userData = [
-            'user.name' => $this->faker->name,
-            'user.email' => $this->faker->email,
-            'user.password' => $this->faker->password
-        ];
+        $this->makeUser();
+
+        Livewire::test(RegisterComponent::class)
+            ->fill($this->userData)
+            ->call('createNewUser');
+
+        $user = User::whereEmail($this->userData['user.email'])->firstOrFail();
+
+        $this->assertAuthenticatedAs($user, 'web');
+    }
+
+    public function test_create_user_redirect_to_dashboard()
+    {
+        $this->makeUser();
+
+        Livewire::test(RegisterComponent::class)
+            ->fill($this->userData)
+            ->call('createNewUser')
+            ->assertRedirect(route('dashboard'));
     }
 }
