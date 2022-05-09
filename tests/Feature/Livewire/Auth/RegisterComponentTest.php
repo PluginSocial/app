@@ -12,6 +12,12 @@ use Tests\TestCase;
 class RegisterComponentTest extends TestCase
 {
     use WithFaker;
+    use RefreshDatabase;
+
+    /**
+     * @var array
+     */
+    private array $userData;
 
     public function test_the_component_can_render_form_register()
     {
@@ -20,14 +26,8 @@ class RegisterComponentTest extends TestCase
 
     public function test_guest_create_user()
     {
-        $userData = [
-            'user.name' => $this->faker->name,
-            'user.email' => $this->faker->email,
-            'user.password' => $this->faker->password
-        ];
-
         Livewire::test(RegisterComponent::class)
-            ->fill($userData)
+            ->fill($this->makeUser())
             ->call('createNewUser');
     }
 
@@ -48,5 +48,34 @@ class RegisterComponentTest extends TestCase
                 'user.email',
                 'user.password'
             ]);
+    }
+
+    public function test_new_user_can_password_is_encrypted()
+    {
+        $this->makeUser();
+
+        Livewire::test(RegisterComponent::class)
+            ->fill($this->userData)
+            ->call('createNewUser');
+
+        $this
+            ->assertDatabaseCount('users', 1)
+            ->assertDatabaseMissing('users', [
+                'name' => $this->userData['user.name'],
+                'email' => $this->userData['user.email'],
+                'password' => $this->userData['user.password']
+            ]);
+    }
+
+    /**
+     * @return array
+     */
+    private function makeUser(): array
+    {
+        return $this->userData = [
+            'user.name' => $this->faker->name,
+            'user.email' => $this->faker->email,
+            'user.password' => $this->faker->password
+        ];
     }
 }
