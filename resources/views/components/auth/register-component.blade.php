@@ -19,7 +19,7 @@
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="material-icons prefix pt-2">person_outline</i>
-                    <input wire:model.defer="user.name" id="user.name" type="text" autocomplete="false">
+                    <input wire:model.defer="user.name" class="active" id="user.name" type="text" autocomplete="false">
                     <label for="user.name" class="center-align">{{ __('Full name') }}</label>
                     <div class="error"> @error('user.name') {{ $message }} @enderror</div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="material-icons prefix pt-2">mail_outline</i>
-                    <input wire:model.defer="user.email" id="user.email" type="email" autocomplete="false">
+                    <input wire:model.defer="user.email" class="active" id="user.email" type="email" autocomplete="false">
                     <label for="user.email">Email</label>
                     <div class="error"> @error('user.email') {{ $message }} @enderror</div>
                 </div>

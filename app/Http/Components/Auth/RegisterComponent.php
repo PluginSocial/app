@@ -9,25 +9,47 @@ use Throwable;
 
 class RegisterComponent extends Component
 {
+    /**
+     * @var User|null
+     */
     public ?User $user;
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public array $rules = [
         'user.name' => ['required', 'string', 'max:255'],
         'user.email' => ['required', 'string', 'email', 'unique:users,email', 'min:6', 'max:255'],
         'user.password' => ['required', 'min:6', 'max:255']
     ];
 
-    public function mount(User $user)
+    /**
+     * Mount method.
+     *
+     * @param  User  $user
+     *
+     * @return void
+     */
+    public function mount(User $user): void
     {
         $this->user = $user;
     }
 
+    /**
+     * Render method.
+     *
+     * @return View
+     */
     public function render(): View
     {
         return view('components.auth.register-component');
     }
 
     /**
+     * Create a new user in system.
+     *
      * @throws Throwable
      */
     public function createNewUser()
