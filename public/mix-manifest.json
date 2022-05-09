@@ -63,6 +63,7 @@
     "/css/pages/charts-chartist.css": "/css/pages/charts-chartist.css",
     "/css/pages/cards-basic.css": "/css/pages/cards-basic.css",
     "/css/pages/badges.css": "/css/pages/badges.css",
+    "/css/pages/auth.css": "/css/pages/auth.css",
     "/css/pages/app-todo.css": "/css/pages/app-todo.css",
     "/css/pages/app-sidebar.css": "/css/pages/app-sidebar.css",
     "/css/pages/app-kanban.css": "/css/pages/app-kanban.css",
