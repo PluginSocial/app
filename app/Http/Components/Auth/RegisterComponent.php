@@ -5,10 +5,9 @@ namespace App\Http\Components\Auth;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 use Throwable;
 
-class RegisterComponent extends Component
+final class RegisterComponent extends AuthComponent
 {
     /**
      * @var User|null
@@ -45,7 +44,7 @@ class RegisterComponent extends Component
      */
     public function render(): View
     {
-        return view('components.auth.register-component');
+        return view('components.auth.register');
     }
 
     /**
