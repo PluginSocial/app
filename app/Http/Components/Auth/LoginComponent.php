@@ -7,7 +7,11 @@ use Illuminate\Contracts\View\View;
 
 final class LoginComponent extends AuthComponent
 {
-    public bool $remember = true;
+    public string $email = '';
+
+    public string $password = '';
+
+    public bool $remember = false;
 
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +19,8 @@ final class LoginComponent extends AuthComponent
      * @return array
      */
     public array $rules = [
-        'user.email' => ['required', 'email', 'exists:users,email'],
-        'user.password' => ['required'],
+        'email' => ['required', 'email', 'exists:users,email'],
+        'password' => ['required'],
         'remember' => ['boolean']
     ];
 
@@ -25,7 +29,7 @@ final class LoginComponent extends AuthComponent
      *
      * @return View
      */
-    public function render()
+    public function render(): View
     {
         return view('components.auth.login');
     }
@@ -35,8 +39,8 @@ final class LoginComponent extends AuthComponent
         $this->validate();
 
         $credentials = [
-            'email' => $this->user->email,
-            'password' => $this->user->password
+            'email' => $this->email,
+            'password' => $this->password
         ];
 
         if (Auth::attempt($credentials, $this->remember)) {

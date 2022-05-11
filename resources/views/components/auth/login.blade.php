@@ -18,20 +18,20 @@
       <div class="row margin">
         <div class="input-field col s12">
           <i class="material-icons prefix pt-2">mail_outline</i>
-          <input wire:model.defer="user.email" class="active" id="user.email" type="email"
+          <input wire:model.defer="email" class="active" id="user.email" type="email"
                  autocomplete="false">
-          <label for="user.email">Email</label>
+          <label for="email">Email</label>
           <div class="row margin">
-            <div class="error"> @error('user.email') {{ $message }} @enderror</div>
+            <div class="error"> @error('email') {{ $message }} @enderror</div>
           </div>
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12">
           <i class="material-icons prefix pt-2">lock_outline</i>
-          <input wire:model.defer="user.password" id="user.password" type="password" autocomplete="false">
-          <label for="user.password">{{ __('Password') }}</label>
-          <div class="error"> @error('user.password') {{ $message }} @enderror</div>
+          <input wire:model.defer="password" id="password" type="password" class="active" autocomplete="false">
+          <label for="password">{{ __('Password') }}</label>
+          <div class="error"> @error('password') {{ $message }} @enderror</div>
         </div>
       </div>
       <div class="row">
