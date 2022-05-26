@@ -1,9 +1,9 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-  plugin-app.test:
+  laravel.test:
     build:
-      context: ./docker/8.1
+      context: ./vendor/laravel/sail/runtimes/8.1
       dockerfile: Dockerfile
       args:
         WWWGROUP: '${WWWGROUP}'
@@ -36,28 +36,40 @@ services:
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - 'sail-mysql:/var/lib/mysql'
+      - 'sailmysql:/var/lib/mysql'
     networks:
       - sail
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
       retries: 3
       timeout: 5s
+  mysql_test:
+    image: "mysql:8.0"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    networks:
+      - sail
   redis:
     image: 'redis:alpine'
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     volumes:
-      - 'sail-redis:/data'
+      - 'sailredis:/data'
     networks:
       - sail
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
+      retries: 3
+      timeout: 5s
 networks:
   sail:
     driver: bridge
 volumes:
-  sail-mysql:
+  sailmysql:
     driver: local
-  sail-redis:
-      driver: local
+  sailredis:
+    driver: local
